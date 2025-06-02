@@ -1,4 +1,4 @@
-Objective 1
+OBJ 1: Find the largest number in each array of size N.
 
 .global _start
 _start
@@ -21,7 +21,7 @@ exit: b exit
 count: word 0x05
 array: word 0x15,0x35,0x45,0x10,0x4f
 
-Objective 2
+OBJ 2:  Find the smallest number in each array of size N. 
 
 .global _start
 _start
@@ -44,7 +44,7 @@ exit: b exit
 count: .word 0x05
 array: .word 0x15,0x35,0x45,0x10,0x4f
 
-Objective 3
+OBJ 3:  Separate Even numbers and odds numbers in an array of size N.
 
 .global _start
 _start:
