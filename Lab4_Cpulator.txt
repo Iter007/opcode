@@ -1,65 +1,48 @@
-objective 1
+OBJ 1: Perform Addition and Subtraction of two 32-bit numbers using data processing addressing mode (with immediate data)
 
 .global _start
 _start:
-mov r0, #0x40
-mov r1, #0x50
-add r2,r1,r0
-sub r3,r0,r1
-mul r4,r0,r1
-MY_EXIT: B MY_EXIT
+    mov r0, #0x40
+    mov r1, #0x50
+    add r2, r1, r0
+    sub r3, r0, r1
+    mul r4, r0, r1
+MY_EXIT:
+    B MY_EXIT
 
-objective 2
+
+OBJ 2: Perform Addition, Subtraction, and Multiplication of two 32-bit numbers using load/store addressing mode.
 
 .global _start
-
 _start:
-    LDR     R0, =0x10100000       // Load base address into R0
-
-    LDR     R1, [R0, #4]          // Load value from address (R0 + 4) into R1
-    LDR     R2, [R0, #8]          // Load value from address (R0 + 8) into R2
-
-    // Add R1 and R2, store result in R3
+    LDR     R0, =0x10100000
+    LDR     R1, [R0, #4]
+    LDR     R2, [R0, #8]
     ADDS    R3, R1, R2
-    STR     R3, [R0, #12]         // Store result at address (R0 + 12)
-
-    // Subtract R2 from R1, store result in R4
+    STR     R3, [R0, #12]
     SUBS    R4, R1, R2
-    STR     R4, [R0, #16]         // Store result at address (R0 + 16)
-
-    // Unsigned Multiply Long: R1 * R2 -> result in R5 (low), R6 (high)
+    STR     R4, [R0, #16]
     UMULL   R5, R6, R1, R2
-    STR     R5, [R0, #20]         // Store lower 32 bits at (R0 + 20)
-    STR     R6, [R0, #24]         // Store upper 32 bits at (R0 + 24)
-
+    STR     R5, [R0, #20]
+    STR     R6, [R0, #24]
 _exit:
-    B       _exit                 // Infinite loop to stop program
+    B       _exit
 
-objective 3
+
+OBJ 3: Perform the logical operations (AND, OR, XOR, and NOT) on two 32-bit numbers using load/store addressing mode.
 
 .global _start
-
 _start:
-    LDR     R0, =0x10100000       // Base address for memory-mapped I/O or RAM
-    LDR     R1, [R0]              // Load data from memory pointed by R0 into R1
-    LDR     R2, [R0, #4]          // Load data from address R0 + 4 into R2
-
-    // Logical AND operation: R3 = R2 AND R1
+    LDR     R0, =0x10100000
+    LDR     R1, [R0]
+    LDR     R2, [R0, #4]
     AND     R3, R2, R1
-    STR     R3, [R0, #8]          // Store R3 at address R0 + 8
-
-    // Logical OR operation: R4 = R1 OR R2
+    STR     R3, [R0, #8]
     ORR     R4, R1, R2
-    STR     R4, [R0, #12]         // Store R4 at address R0 + 12
-
-    // Exclusive OR operation: R5 = R1 EOR R2
+    STR     R4, [R0, #12]
     EOR     R5, R1, R2
-    STR     R5, [R0, #16]         // Store R5 at address R0 + 16
-
-    // Bitwise NOT operation: R6 = NOT R1
+    STR     R5, [R0, #16]
     MVN     R6, R1
-    STR     R6, [R0, #20]         // Store R6 at address R0 + 20
-
-// Exit (in a simulator, this might halt or loop)
+    STR     R6, [R0, #20]
 _exit:
-    B       _exit                 // Infinite loop to stop execution
+    B       _exit
