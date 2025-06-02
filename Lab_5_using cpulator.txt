@@ -69,4 +69,4 @@ exit: b exit
 count: .word 0x07
 array: .word 0x15,0x35,0x32,0x45,0x10,0x4f,0x34
 even: .word 0,0,0,0,0,0,0
-odd: .word 0,0,0,0,0,0,0s
+odd: .word 0,0,0,0,0,0,0
