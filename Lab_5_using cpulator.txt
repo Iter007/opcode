@@ -1,6 +1,6 @@
 Objective 1
 
-.global_start
+.global _start
 _start
 @largest number from a given array
 	ldr r0,=count
@@ -23,7 +23,7 @@ array: word 0x15,0x35,0x45,0x10,0x4f
 
 Objective 2
 
-.global_start
+.global _start
 _start
 @smallest number from a given array
 	ldr r0,=count
@@ -41,12 +41,12 @@ fwd:
 	str r4,[r2]
 exit: b exit
 .data
-count: word 0x05
-array: word 0x15,0x35,0x45,0x10,0x4f
+count: .word 0x05
+array: .word 0x15,0x35,0x45,0x10,0x4f
 
 Objective 3
 
-.global_start
+.global _start
 _start:
 	ldr r0,=count
 	ldr r1,[r0]
@@ -66,7 +66,7 @@ fwd1:
 	bne back
 exit: b exit
 .data
-count: word 0x07
-array: word 0x15,0x35,0x32,0x45,0x10,0x4f,0x34
-even: word 0,0,0,0,0,0,0
-odd: word 0,0,0,0,0,0,0s
+count: .word 0x07
+array: .word 0x15,0x35,0x32,0x45,0x10,0x4f,0x34
+even: .word 0,0,0,0,0,0,0
+odd: .word 0,0,0,0,0,0,0s
