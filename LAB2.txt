@@ -1,4 +1,4 @@
-OBJ_1:
+OBJ_1:  Multiplication of two 16-bit numbers without using MUL instruction in direct addressing mode
 
 MOV DX,0000H
 MOV AX,0000H
@@ -13,7 +13,7 @@ MOV [5004H],AX
 MOV [5006H],DX
 HLT
 
-OBJ_2:
+OBJ_2:  SUM and AVERAGE of N 16-bit numbers.
 
 MOV SI,5000H
 MOV CL,[SI]
@@ -41,7 +41,7 @@ INC SI
 MOV [SI],DX
 HLT
 
-OBJ_3:
+OBJ_3:  Count no. of 0’s in an 8-bit number.
 
 MOV CL,08H
 MOV CH,00H
@@ -55,7 +55,7 @@ MOV [2001H],CH
 HLT
 
 
-OBJ_4:
+OBJ_4:  Move a block of 16-bit data from one location to another. 
 
 MOV AX,2000H
 MOV DS,AX
