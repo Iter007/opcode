@@ -1,0 +1,46 @@
+OBJ_1:
+
+mov AX,5000H
+MOV CX,AX
+ADD AX,2222H
+MOV [3000H],AX
+MOV AX,CX
+SUB AX,1234H
+MOV [3002H],AX
+HLT
+
+
+OBJ_2:
+
+MOV SI, 0200H      
+MOV AL, [SI]       
+MOV CL, AL         
+ROR [SL + 1] , AL         
+MOV BL, [SI+2]    
+MOV AL, CL         
+XOR AL, BL        
+MOV DL, AL         
+MOV AL, CL        
+AND AL, BL         
+OR AL, DL          
+MOV [SI+3], AL     
+HLT              
+
+
+OBJ_3:
+
+MOV AL,[5000H]
+MOV BL,AL
+SHR AL,01H  
+XOR AL,BL
+MOV [5001H],AL
+HLT
+
+
+obj_4:
+
+MOV AL,[3000H]
+NOT AL
+ADD AL,01H
+MOV [3001H],AL
+HLT

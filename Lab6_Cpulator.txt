@@ -1,0 +1,68 @@
+Objective 1
+
+.global _start
+
+_start:
+    MOV     R0, #5        // N = 5
+    MOV     R1, #1        // RESULT = 1
+
+factorial_loop:
+    CMP     R0, #0
+    BEQ     end_loop      // if N == 0, end loop
+
+    MUL     R2, R1, R0    // R2 = R1 * R0
+    MOV     R1, R2        // R1 = result
+    SUBS    R0, R0, #1    // N--
+
+    B       factorial_loop
+
+end_loop:
+    LDR     R2, =result   // Load address of result
+    STR     R1, [R2]      // Store final result in memory
+
+_exit:
+    B       _exit         // Infinite loop to end
+
+.data
+result: .word 0
+
+Objective 2
+
+.global _start
+
+_start:
+    MOV     R1, #1           // First Fibonacci number
+    MOV     R2, #0           // Second Fibonacci number
+    MOV     R3, #0           // Temporary result
+
+    LDR     R0, =count       // Load address of count (N)
+    LDR     R6, =fib_series  // Load address of series array
+    LDRB    R5, [R0]         // R5 = N
+
+    CMP     R5, #1
+    BLE     stop1            // If N <= 1, go to stop1
+
+    STRB    R2, [R6], #1     // Store first term (0)
+    SUBS    R5, R5, #1
+    STRB    R1, [R6], #1     // Store second term (1)
+
+back:
+    SUBS    R5, R5, #1       // Decrease counter
+    BEQ     stop             // If R5 == 0, exit
+
+    ADD     R3, R1, R2       // R3 = R1 + R2
+    STRB    R3, [R6], #1     // Store R3 into array
+    MOV     R2, R1           // R2 = old R1
+    MOV     R1, R3           // R1 = new value
+
+    B       back
+
+stop1:
+    STRB    R3, [R6]
+
+stop:
+    B       stop             // Infinite loop
+
+.data
+count:      .byte 0x0A       // N = 10
+fib_series: .byte 0,0,0,0,0,0,0,0,0,0
