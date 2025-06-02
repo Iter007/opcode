@@ -1,4 +1,4 @@
-OBJ_1:
+OBJ_1: PERFORM ADD,SUB,MUL,DIV(16-BIT)
 
 mov AX,5000H
 MOV CX,AX
@@ -10,7 +10,7 @@ MOV [3002H],AX
 HLT
 
 
-OBJ_2:
+OBJ_2: Swapping of nibble of data1 (data1 and data2) or (data1 xor data2) 
 
 MOV SI, 0200H      
 MOV AL, [SI]       
@@ -27,7 +27,7 @@ MOV [SI+3], AL
 HLT              
 
 
-OBJ_3:
+OBJ_3:  Gray code of an 8-bit binary number.
 
 MOV AL,[5000H]
 MOV BL,AL
@@ -37,7 +37,7 @@ MOV [5001H],AL
 HLT
 
 
-obj_4:
+obj_4:  2’s complement of an 8-bit number.  
 
 MOV AL,[3000H]
 NOT AL
