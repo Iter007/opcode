@@ -1,13 +1,28 @@
 OBJ_1: PERFORM ADD,SUB,MUL,DIV(16-BIT)
 
-mov AX,5000H
-MOV CX,AX
-ADD AX,2222H
-MOV [3000H],AX
-MOV AX,CX
-SUB AX,1234H
-MOV [3002H],AX
-HLT
+mov ax, 4000h
+mov bx, 2000h
+mov cx, ax
+add ax, bx
+mov [3000h], ax
+
+mov ax, cx
+sub ax, bx
+mov [3002h], ax
+
+mov ax, cx
+mul bx
+mov [3004h], ax
+mov [3006h], dx
+
+mov dx, 0000h
+mov ax, cx
+div bx
+mov [3008h], ax
+mov [300Ah], dx
+
+hlt
+
 
 
 OBJ_2: Swapping of nibble of data1 (data1 and data2) or (data1 xor data2) 
